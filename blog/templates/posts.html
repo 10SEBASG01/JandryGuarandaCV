@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>Posts</h1>
+{% for post in posts %}
+    <h2>{{post.title}}</h2>
+    <h3>{{post.date|date:'z'}} de 365 días del año</h3>
+    <p>{{post.description|safe|truncatechars:100}}</p>
+    <img src="{{post.image.url}}" alt="{{post.title}}">
+    <div class="mt-2">
+        <a href="{% url 'blog:post_detail' post.id %}" class="btn btn-outline-light btn-sm">
+            Detalle
+        </a>
+    </div>
+{% endfor %}
+{% endblock %}
